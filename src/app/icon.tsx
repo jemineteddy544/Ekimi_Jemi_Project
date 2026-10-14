@@ -5,9 +5,11 @@ import { join } from "node:path";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
+// Read at module level so the icon is rendered once at build time.
+const display = await readFile(join(process.cwd(), "assets/BarlowCondensed-SemiBold.ttf"));
+
 /** Browser-tab icon: "EJ" monogram on brand navy with a safety-yellow rule. */
 export default async function Icon() {
-  const display = await readFile(join(process.cwd(), "assets/BarlowCondensed-SemiBold.ttf"));
   return new ImageResponse(
     (
       <div

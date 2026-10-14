@@ -12,8 +12,13 @@ npm run build    # production build
 npm run lint
 ```
 
-No environment variables are required. On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` is used
-automatically for canonical URLs, the sitemap and social previews (`src/lib/url.ts`).
+No environment variables are required. The site's absolute URL (used for the sitemap,
+robots.txt and social previews) is picked up automatically from the host — Netlify's `URL`
+or Vercel's `VERCEL_PROJECT_PRODUCTION_URL`. Once a custom domain is live, set
+`NEXT_PUBLIC_SITE_URL=https://yourdomain.com` in the host's environment settings
+(`src/lib/url.ts`).
+
+Hosted on **Netlify**, which detects Next.js automatically — every push to `main` redeploys.
 
 ## Project structure
 

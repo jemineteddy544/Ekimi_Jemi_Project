@@ -7,18 +7,21 @@ export const alt = `${site.name} — marine equipment, dredging, piling and heav
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Read at module level so the image is rendered once at build time (static),
+// rather than on each request — no runtime file access needed on the host.
+const root = process.cwd();
+const [display, body, mono, photo, logo] = await Promise.all([
+  readFile(join(root, "assets/BarlowCondensed-SemiBold.ttf")),
+  readFile(join(root, "assets/Barlow-Medium.ttf")),
+  readFile(join(root, "assets/IBMPlexMono-Medium.ttf")),
+  readFile(join(root, "public/images/tug-and-barge.jpg")),
+  readFile(join(root, "public/images/logo.png")),
+]);
+const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
+const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+
 /** The preview image shown when the site is shared on WhatsApp, LinkedIn, X, etc. */
 export default async function OpengraphImage() {
-  const root = process.cwd();
-  const [display, body, mono, photo, logo] = await Promise.all([
-    readFile(join(root, "assets/BarlowCondensed-SemiBold.ttf")),
-    readFile(join(root, "assets/Barlow-Medium.ttf")),
-    readFile(join(root, "assets/IBMPlexMono-Medium.ttf")),
-    readFile(join(root, "public/images/tug-and-barge.jpg")),
-    readFile(join(root, "public/images/logo.png")),
-  ]);
-  const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
-  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
     (
