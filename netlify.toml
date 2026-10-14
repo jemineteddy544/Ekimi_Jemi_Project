@@ -1,0 +1,10 @@
+# Netlify build settings. These override the dashboard, so the deploy doesn't
+# depend on what was picked when the site was created. Netlify's Next.js
+# runtime is applied automatically and expects ".next" as the publish dir.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next.js 16 needs Node 20.9+
+  NODE_VERSION = "22"
