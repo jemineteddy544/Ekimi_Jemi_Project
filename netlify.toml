@@ -8,3 +8,8 @@
 [build.environment]
   # Next.js 16 needs Node 20.9+
   NODE_VERSION = "22"
+
+# Declared explicitly because auto-detection didn't apply it: without this
+# Netlify uploaded the raw .next folder and every route returned 404.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
