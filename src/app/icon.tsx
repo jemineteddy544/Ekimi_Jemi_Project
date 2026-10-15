@@ -8,7 +8,7 @@ export const contentType = "image/png";
 // Read at module level so the icon is rendered once at build time.
 const display = await readFile(join(process.cwd(), "assets/BarlowCondensed-SemiBold.ttf"));
 
-/** Browser-tab icon: "EJ" monogram on brand navy with a safety-yellow rule. */
+/** Browser-tab icon: "EJ" monogram on brand navy with a light-blue rule. */
 export default async function Icon() {
   return new ImageResponse(
     (
@@ -29,7 +29,7 @@ export default async function Icon() {
         }}
       >
         EJ
-        <div style={{ width: 30, height: 5, marginTop: 2, background: "#f5b301" }} />
+        <div style={{ width: 30, height: 5, marginTop: 2, background: "#8fb3f5" }} />
       </div>
     ),
     { ...size, fonts: [{ name: "Barlow Condensed", data: display, style: "normal", weight: 600 }] }

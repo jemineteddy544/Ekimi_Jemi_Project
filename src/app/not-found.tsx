@@ -11,7 +11,7 @@ export default function NotFound() {
         </h1>
         <p className="lead reveal">The page you&apos;re looking for has moved or doesn&apos;t exist.</p>
         <div className="not-found-actions reveal">
-          <Link href="/" className="btn btn-signal">
+          <Link href="/" className="btn btn-primary">
             Back to home
           </Link>
           <Link href="/services" className="text-link">

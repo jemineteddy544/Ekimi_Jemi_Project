@@ -46,7 +46,7 @@ export default async function OpengraphImage() {
             >
               <img src={logoSrc} alt="" width={64} height={61} />
             </div>
-            <div style={{ display: "flex", fontFamily: "Plex Mono", fontSize: 18, letterSpacing: 3, color: "#f5b301" }}>
+            <div style={{ display: "flex", fontFamily: "Plex Mono", fontSize: 18, letterSpacing: 3, color: "#8fb3f5" }}>
               {`EST. ${site.founded} · ${site.rcNumber}`}
             </div>
           </div>
@@ -69,7 +69,7 @@ export default async function OpengraphImage() {
                 fontSize: 52,
                 lineHeight: 1.1,
                 textTransform: "uppercase",
-                color: "#f5b301",
+                color: "#8fb3f5",
               }}
             >
               {"Engineering at the water's edge"}

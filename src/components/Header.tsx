@@ -55,7 +55,7 @@ export default function Header() {
           </nav>
 
           <div className="header-cta">
-            <Link href="/contact#quote" className="btn btn-signal">
+            <Link href="/contact#quote" className="btn btn-primary">
               Request a quote
             </Link>
           </div>
@@ -87,7 +87,7 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <Link href="/contact#quote" className="btn btn-signal" onClick={() => setOpen(false)}>
+        <Link href="/contact#quote" className="btn btn-primary" onClick={() => setOpen(false)}>
           Request a quote
         </Link>
       </div>

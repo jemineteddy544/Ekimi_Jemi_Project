@@ -13,7 +13,7 @@ export default function Cta() {
           <p>{cta.body}</p>
         </div>
         <div className="cta-actions reveal">
-          <Link href={cta.primary.href} className="btn btn-signal">
+          <Link href={cta.primary.href} className="btn btn-primary">
             {cta.primary.label}
           </Link>
           <a href={whatsappLink(site.whatsapp)} target="_blank" rel="noreferrer" className="text-link">

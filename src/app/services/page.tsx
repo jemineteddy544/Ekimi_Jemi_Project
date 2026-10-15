@@ -77,7 +77,7 @@ export default function ServicesPage() {
               <div key={f.name} className="fleet-card reveal" style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}>
                 <div className="fleet-media">
                   <Image src={f.image} alt={f.name} fill sizes="(max-width: 700px) 100vw, 25vw" />
-                  {f.lease && <span className="tag tag-signal mono">For lease</span>}
+                  {f.lease && <span className="tag tag-accent mono">For lease</span>}
                 </div>
                 <h3>{f.name}</h3>
                 <p>{f.detail}</p>

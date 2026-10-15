@@ -82,7 +82,7 @@ export default function ContactForm() {
         />
       </div>
       <div className="field full">
-        <button type="submit" className="btn btn-signal">
+        <button type="submit" className="btn btn-primary">
           Send on WhatsApp
         </button>
       </div>

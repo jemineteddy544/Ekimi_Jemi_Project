@@ -1,6 +1,6 @@
 /* ==========================================================================
    Ekimi Jemy — industrial / spec-sheet design system
-   Navy from the company badge, safety yellow from site plant, concrete paper.
+   Navy and blue from the company badge, white on dark surfaces, concrete paper.
    ========================================================================== */
 
 :root {
@@ -16,8 +16,17 @@
   --steel-light: #c3cde3;
   --line: rgba(13, 21, 38, 0.14);
   --line-light: rgba(255, 255, 255, 0.16);
-  --signal: #f5b301;
-  --signal-hover: #ffc72c;
+  /* Accent: brand blue lifted from the logo navy. No yellow — client brand is blue. */
+  --accent: #1f5fd1;
+  --accent-hover: #174bb0;
+  --accent-soft: #8fb3f5;
+
+  /* Context colours: blue on light surfaces, flipped to white inside dark ones
+     (see "Dark surfaces" below). Components use these, not --accent directly. */
+  --ctx-accent: var(--accent);
+  --ctx-btn-bg: var(--accent);
+  --ctx-btn-fg: var(--white);
+  --ctx-btn-hover: var(--accent-hover);
 
   --font-d: var(--font-display), "Arial Narrow", sans-serif;
   --font-b: var(--font-body), system-ui, sans-serif;
@@ -76,13 +85,15 @@ p {
 }
 
 :focus-visible {
-  outline: 3px solid var(--signal);
-  outline-offset: 3px;
+  /* two-tone ring so focus shows on both light and navy surfaces */
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--accent);
 }
 
 ::selection {
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--accent);
+  color: var(--white);
 }
 
 .container {
@@ -92,14 +103,32 @@ p {
   padding-inline: var(--gutter);
 }
 
+/* Dark surfaces: accents, links and buttons switch to white. */
+.header,
+.mobile-menu,
+.hero,
+.page-hero,
+.stats,
+.featured,
+.field-log,
+.cta,
+.mission,
+.modal,
+.footer {
+  --ctx-accent: var(--white);
+  --ctx-btn-bg: var(--white);
+  --ctx-btn-fg: var(--navy-900);
+  --ctx-btn-hover: #dce6f8;
+}
+
 .skip-link {
   position: absolute;
   left: 16px;
   top: -60px;
   z-index: 200;
   padding: 10px 16px;
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--accent);
+  color: var(--white);
   font-weight: 600;
 }
 .skip-link:focus {
@@ -133,7 +162,7 @@ p {
   content: "";
   width: 28px;
   height: 3px;
-  background: var(--signal);
+  background: var(--ctx-accent);
 }
 
 .display-xl,
@@ -173,18 +202,19 @@ p {
   gap: 6px;
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 2px solid var(--signal);
+  border-bottom: 2px solid var(--ctx-accent);
   padding-bottom: 2px;
   transition: color 0.2s;
 }
 .text-link:hover {
-  color: var(--navy-600);
+  color: var(--accent);
 }
 .text-link.light {
   color: var(--white);
 }
 .text-link.light:hover {
-  color: var(--signal);
+  color: var(--accent-soft);
+  border-color: var(--accent-soft);
 }
 
 /* ---------- Buttons ---------- */
@@ -210,12 +240,12 @@ p {
 .btn:hover {
   transform: translateY(-2px);
 }
-.btn-signal {
-  background: var(--signal);
-  color: var(--ink);
+.btn-primary {
+  background: var(--ctx-btn-bg);
+  color: var(--ctx-btn-fg);
 }
-.btn-signal:hover {
-  background: var(--signal-hover);
+.btn-primary:hover {
+  background: var(--ctx-btn-hover);
 }
 .btn-navy {
   background: var(--navy-900);
@@ -279,7 +309,7 @@ p {
   font-size: 0.68rem;
   font-weight: 400;
   letter-spacing: 0.18em;
-  color: var(--signal);
+  color: var(--accent-soft);
 }
 .nav {
   display: flex;
@@ -299,7 +329,7 @@ p {
   right: 0;
   bottom: -6px;
   height: 2px;
-  background: var(--signal);
+  background: var(--ctx-accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease);
@@ -374,7 +404,7 @@ p {
   text-decoration: none;
 }
 .mobile-menu nav a .mono {
-  color: var(--signal);
+  color: var(--accent-soft);
 }
 
 /* ---------- Media ---------- */
@@ -459,7 +489,7 @@ p {
   color: var(--steel-light);
 }
 .hero-stamp span:first-child {
-  color: var(--signal);
+  color: var(--white);
 }
 
 /* ---------- Stats strip ---------- */
@@ -495,7 +525,7 @@ p {
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   font-weight: 700;
   line-height: 1;
-  color: var(--signal);
+  color: var(--white);
 }
 .stat small {
   font-size: 0.85rem;
@@ -639,7 +669,7 @@ p {
 }
 .spec a {
   text-decoration: none;
-  border-bottom: 1px solid var(--signal);
+  border-bottom: 1px solid var(--ctx-accent);
 }
 .spec-lg dd {
   font-size: 1.15rem;
@@ -694,7 +724,7 @@ p {
   font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 700;
   line-height: 0.85;
-  color: var(--signal);
+  color: var(--white);
 }
 .figure span {
   font-family: var(--font-m);
@@ -765,9 +795,9 @@ p {
   color: var(--white);
   font-size: 0.68rem;
 }
-.tag-signal {
-  background: var(--signal);
-  color: var(--ink);
+.tag-accent {
+  background: var(--accent);
+  color: var(--white);
 }
 
 /* ---------- Lease band ---------- */
@@ -794,9 +824,9 @@ p {
   right: 20px;
   bottom: 24px;
   padding: 14px 18px;
-  border: 3px solid var(--signal);
+  border: 3px solid var(--white);
   background: rgba(6, 19, 47, 0.85);
-  color: var(--signal);
+  color: var(--white);
   font-family: var(--font-d);
   font-size: 1.6rem;
   font-weight: 700;
@@ -831,7 +861,7 @@ p {
   top: 0.55em;
   width: 12px;
   height: 12px;
-  background: var(--signal);
+  background: var(--ctx-accent);
   clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
@@ -909,8 +939,8 @@ p {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--white);
+  color: var(--navy-900);
   transform: translate(-50%, -50%);
   transition: transform 0.3s var(--ease);
 }
@@ -960,8 +990,8 @@ p {
   width: 48px;
   height: 48px;
   border: 0;
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--white);
+  color: var(--navy-900);
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
@@ -1035,7 +1065,7 @@ p {
 .hazard {
   height: 14px;
   margin-bottom: var(--section);
-  background: repeating-linear-gradient(-45deg, var(--signal) 0 18px, var(--navy-950) 18px 36px);
+  background: repeating-linear-gradient(-45deg, var(--white) 0 18px, var(--navy-950) 18px 36px);
 }
 .cta-inner {
   display: grid;
@@ -1082,9 +1112,9 @@ p {
   transition: background 0.2s, color 0.2s;
 }
 .jump a:hover {
-  background: var(--signal);
-  color: var(--ink);
-  border-color: var(--signal);
+  background: var(--white);
+  color: var(--navy-900);
+  border-color: var(--white);
 }
 
 /* ---------- Services page ---------- */
@@ -1246,7 +1276,7 @@ p {
   top: calc(var(--header-h) + 24px);
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-bottom: 8px solid var(--signal);
+  border-bottom: 8px solid var(--accent);
 }
 .founder-media img {
   object-fit: cover;
@@ -1351,7 +1381,7 @@ p {
   outline: none;
   border-color: var(--navy-600);
   background: var(--white);
-  box-shadow: inset 0 -3px 0 var(--signal);
+  box-shadow: inset 0 -3px 0 var(--accent);
 }
 .form-note {
   grid-column: 1 / -1;
@@ -1424,7 +1454,7 @@ p {
   font-size: 0.9rem;
   font-weight: 400;
   text-transform: none;
-  color: var(--signal);
+  color: var(--accent-soft);
 }
 .footer .spec,
 .footer .spec > div {
@@ -1444,7 +1474,7 @@ p {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--signal);
+  color: var(--white);
 }
 .footer ul {
   display: grid;

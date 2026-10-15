@@ -39,7 +39,7 @@ export default function Home() {
           <div className="hero-bottom reveal" style={delay(240)}>
             <p>{hero.body}</p>
             <div className="hero-actions">
-              <Link href={hero.primary.href} className="btn btn-signal">
+              <Link href={hero.primary.href} className="btn btn-primary">
                 {hero.primary.label}
               </Link>
               <Link href={hero.secondary.href} className="text-link light">
